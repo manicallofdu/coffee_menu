@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منوی دیجیتال کافه ایران</title>
+  <style>
+    /* --- متغیرهای رنگی و تایپوگرافی تم کافه --- */
+    :root {
+      --bg-body: #16120e;
+      --bg-card: #201a14;
+      --bg-category: #292119;
+      --text-main: #f5ebe0;
+      --text-muted: #bda895;
+      --accent-gold: #d4a373;
+      --accent-warm: #bc6c25;
+      --border-soft: rgba(212, 163, 115, 0.18);
+      --font-family: 'Vazirmatn', 'Shabnam', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* --- ریست و رفتارهای پایه --- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #56412d;
+      color: var(--text-main);
+      font-family: samim;
+      line-height: 1.6;
+      padding: 1.5rem 1rem 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* --- هدر منو --- */
+    header {
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      border-bottom: 1px solid var(--border-soft);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .logo-badge {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 0.75rem;
+      color: var(--accent-gold);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--accent-gold);
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    /* --- گرید و دسته‌بندی‌ها --- */
+    main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      main {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+      }
+    }
+
+    .category-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--accent-warm);
+    }
+
+    .category-icon {
+      width: 22px;
+      height: 22px;
+      stroke: var(--accent-gold);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    /* --- لیست آیتم‌ها --- */
+    .item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .item-row {
+      display: flex;
+      align-items: baseline;
+      width: 100%;
+    }
+
+    .item-name {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .item-dots {
+      flex-grow: 1;
+      border-bottom: 1px dashed rgba(212, 163, 115, 0.35);
+      margin: 0 0.6rem;
+    }
+
+    .item-price {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--accent-gold);
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .currency {
+      font-size: 0.75rem;
+      font-weight: normal;
+      color: var(--text-muted);
+      margin-right: 2px;
+    }
+
+    .item-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      padding-inline-end: 1rem;
+    }
+
+    /* --- فوتر --- */
+    footer {
+      margin-top: 3.5rem;
+      padding: 2rem 1rem 0;
+      border-top: 1px solid var(--border-soft);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 600px) {
+      .info-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .info-item {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 0.75rem;
+      border-radius: 8px;
+    }
+
+    .info-title {
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+
+    .closing-note {
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- هدر کافه -->
+    <header>
+      <svg class="logo-badge" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3" />
+      </svg>
+      <h1>کافه ایران</h1>
+      <p class="tagline">جایی برای طعم‌های اصیل، گفت‌وگوهای گرم و لحظات آرام</p>
+    </header>
+
+    <!-- لیست دسته‌بندی‌ها و آیتم‌ها -->
+    <main>
+      <!-- ۱. نوشیدنی‌های گرم -->
+      <section class="category-section">
+        <div class="category-header">
+          <svg class="category-icon" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+          <h2 class="category-title">نوشیدنی‌های گرم</h2>
+        </div>
+        <ul class="item-list">
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">اسپرسو دوبل</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۶۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">۱۰۰٪ عربیکا، عصاره‌گیری با پروفایل طعمی شکلاتی و بادی غلیظ</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">کافه لته</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۸۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">شات اسپرسو تازه، شیر استیم‌شده مخملی و یک لایه فوم لطیف</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">قهوه دمی V60</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۹۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">دانه‌های سینگل اورجین اتیوپی، نت‌های گلی و اسیدیته شفاف</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">چای ماسالا دست‌ساز</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۸۰,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">ترکیب هل، دارچین، زنجبیل تازه و شیر داغ محلی</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ۲. نوشیدنی‌های سرد و بار سرد -->
+      <section class="category-section">
+        <div class="category-header">
+          <svg class="category-icon" viewBox="0 0 24 24"><path d="M7 21a4 4 0 01-4-4V5h18v12a4 4 0 01-4 4H7zM6 5l1.5-3h9L18 5M12 9v6M9 12h6"/></svg>
+          <h2 class="category-title">بار سرد و موکتل</h2>
+        </div>
+        <ul class="item-list">
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">آیس آمریکانو</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۷۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">دوبل اسپرسو پرلود، آب تصفیه سرد و قطعات یخ شفاف</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">کولدمینت موکتل</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۱۱۰,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">عصاره لیمو ترش، نعناع تازه کوبیده‌شده و سیروپ شکر قهوه‌ای</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">آیس کارامل ماکیاتو</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۱۰۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">شیر خنک، وانیل ماداگاسکار، اسپرسو و دریپ سس کارامل شور</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ۳. میانوعده و کیک -->
+      <section class="category-section">
+        <div class="category-header">
+          <svg class="category-icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8 8 8 0 01-8 8zm1-13h-2v6h6v-2h-4z"/></svg>
+          <h2 class="category-title">کیک و شیرینی تازه</h2>
+        </div>
+        <ul class="item-list">
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">چیزکیک سن‌سباستین</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۱۲۰,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">بافت کرمی کاراملی با سس شکلات تلخ بلژیکی دست‌ساز</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">کروسان کره فرانسوی</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۷۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">لایه‌ای، ترد و پخت روز با کره خالص حیوانی</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">وافل میوه‌ای بلژیکی</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۱۳۰,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">وافل تازه با بستنی وانیلی، موز، توت‌فرنگی و عسل طبیعی</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ۴. عصرانه و غذاهای سبک -->
+      <section class="category-section">
+        <div class="category-header">
+          <svg class="category-icon" viewBox="0 0 24 24"><path d="M3 11h18M3 15h18M5 7h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/></svg>
+          <h2 class="category-title">غذاهای سبک و عصرانه</h2>
+        </div>
+        <ul class="item-list">
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">پنینی مرغ و پستو</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۱۶۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">سینه مرغ گریل، پنیر موزارلا تازه، سس پستو ریحان و نان چیاباتا</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">سالاد سزار گریل</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۱۸۰,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">کاهو پیچ تازه، فیله مرغ مرینیت‌شده، پنیر پارمسان و سس مخصوص سزار</p>
+          </li>
+          <li class="menu-item">
+            <div class="item-row">
+              <span class="item-name">تست آووکادو و تخم‌مرغ</span>
+              <span class="item-dots"></span>
+              <span class="item-price">۱۴۵,۰۰۰ <span class="currency">تومان</span></span>
+            </div>
+            <p class="item-desc">پوره آووکادو تازه، تخم‌مرغ پوچ‌شده، فلفل پولبیبر روی نان چاودار</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- فوتر اطلاعات ثابت کافه -->
+    <footer>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-title">📍 آدرس کافه</span>
+          <span>تهران، خیابان ولیعصر، نرسیده به میدان ونک، پلاک ۱۲</span>
+        </div>
+        <div class="info-item">
+          <span class="info-title">⏰ ساعات کاری</span>
+          <span>همه‌روزه از ساعت ۸:۰۰ صبح الی ۲۳:۳۰ شب</span>
+        </div>
+        <div class="info-item">
+          <span class="info-title">📷 اینستاگرام</span>
+          <span>@cafeiran_official</span>
+        </div>
+      </div>
+      <p class="closing-note">مالیات و حق سرویس به قیمت‌ها اضافه نمی‌گردد. لحظات دلنشینی داشته باشید.</p>
+    </footer>
+  </div>
+
+</body>
+</html>
