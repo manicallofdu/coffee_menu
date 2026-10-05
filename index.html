@@ -24,11 +24,12 @@
       margin: 0;
       padding: 0;
     }
-    @font-face {
-    font-family: 'Samim';
-    src: url('./fonts/Samim.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+     @font-face {
+        font-family: 'Samim';
+        src: url('./fonts/Samim.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
     }
     
     @font-face {
@@ -36,13 +37,33 @@
         src: url('./fonts/Samim-Bold.ttf') format('truetype');
         font-weight: bold;
         font-style: normal;
+        font-display: swap;
     }
 
+    :root {
+      --bg-body: #16120e;
+      --bg-card: #201a14;
+      --bg-category: #292119;
+      --text-main: #f5ebe0;
+      --text-muted: #bda895;
+      --accent-gold: #d4a373;
+      --accent-warm: #bc6c25;
+      --border-soft: rgba(212, 163, 115, 0.18);
+      /* اینجا صمیم رو گذاشتیم اولویت اول */
+      --font-family: 'Samim', 'Vazirmatn', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background-color: #56412d;
       color: var(--text-main);
-      font-family: samim;
+      /* استفاده از متغیر بالا */
+      font-family: var(--font-family);
       line-height: 1.6;
       padding: 1.5rem 1rem 3rem;
       display: flex;
